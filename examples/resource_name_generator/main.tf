@@ -11,11 +11,15 @@ provider "hashicups" {}
 
 
 locals  {
-     resource_name = split(" ",provider::hashicups::name_generator(3, "dev", "uksouth", "ken", "rg", "cache","general") )
+     rg_resource_name = split(" ",provider::hashicups::name_generator(5, "dev", "uksouth", "ken", "rg", "cache","general") )
+     storage_resource_name = split(" ",provider::hashicups::name_generator(5, "prod", "uksouth", "ken", "sa", "cache","storage") )
 }
 
 
+output "rg_resource_name" {
+     value = local.rg_resource_name[1]
+}
 
-output "resource_name" {
-     value = local.resource_name[1]
+output "storage_resource_name" {
+     value = local.storage_resource_name[4]
 }
