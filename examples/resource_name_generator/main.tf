@@ -12,8 +12,10 @@ provider "hashicups" {
 }
 
 locals {
-  rg_resource_name      = provider::hashicups::get_resource_name(5, "dev", "uksouth", "rg", "general", "data", "ken", "corp", "client")[0]
-  storage_resource_name = provider::hashicups::get_resource_name(5, "prod", "uksouth", "rg", "shared", "db", "storage", "mktg", "shared")[1]
+  //func handleStorageResource(resourceType, region, appName, projectName, businessUnit, subType, env string, i int) string {
+  // &noOfResources, &env, &region, &resourceType, &resourceCategory, &appName, &projectName, &businessUnit, &subType
+  rg_resource_name      = provider::hashicups::get_resource_name(5, "rg", "uksouth", "rg", "general", "data", "ken", "corp", "client")[0]
+  storage_resource_name = provider::hashicups::get_resource_name(5, "prod", "uksouth", "st", "storage", "fin", "", "dev", "3")
 }
 
 output "rg_resource_name" {
